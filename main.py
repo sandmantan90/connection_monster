@@ -17,13 +17,24 @@ MAX_REQUESTS = config['max_requests']
 
 # Step 1: Load the message template from an external file
 def load_message_template(file_path):
-    with open(file_path, 'r') as file:
+    with open('content/message.txt', 'r', encoding='utf-8') as file:
         return file.read()
 
 # Step 2: Log connection statuses to a file
 def log_connection_result(profile_name, status):
     with open('logs/connection_log.txt', 'a') as log_file:
         log_file.write(f"{profile_name}: {status}\n")
+
+def get_first_name(profile_name):
+    # Check if the name contains parentheses
+    if '(' in profile_name and ')' in profile_name:
+        # Extract the name inside the parentheses
+        first_name = profile_name.split('(')[1].split(')')[0].strip()
+    else:
+        # Otherwise, just take the first word as the first name
+        first_name = profile_name.split(' ')[0].strip()
+    
+    return first_name
 
 # Step 6: Define the function to automate sending connection requests
 def send_connection_requests(message_template, max_requests):
@@ -80,7 +91,8 @@ def send_connection_requests(message_template, max_requests):
                     if add_note_button:
                         add_note_button.click()
                         time.sleep(1)
-                        first_name = profile_name.split(' ')[0]
+
+                        first_name = get_first_name(profile_name)
                         # Customize the message with the profile name
                         personalized_message = message_template.replace("{name}", first_name)
 
@@ -96,7 +108,7 @@ def send_connection_requests(message_template, max_requests):
                 # Find and click the "Send invitation" button
                 send_button = driver.find_element(By.XPATH, '//button//span[text()="Send"]')
                 parent_send_button = send_button.find_element(By.XPATH, './ancestor::button')
-
+                time.sleep(3)
                 if parent_send_button:
                     parent_send_button.click()
                     request_count += 1

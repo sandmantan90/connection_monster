@@ -1,1 +1,6 @@
-Hi {name}, I came across your profile and would love to connect with you!
+Hi {name},
+
+I’m pursuing my MS in ECE (AI/ML) at UC San Diego and have 3 years of machine learning and software engineering experience at Siemens Healthineers after graduating from IIT. I’m excited about Apple’s work and would love to connect to explore potential opportunities.
+
+Best,
+Ketan
