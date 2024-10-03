@@ -1,0 +1,28 @@
+Hi {name},
+
+Hope you're doing well! I came across exciting opportunities at TikTok and believe I could bring real value to the team. Would you be open to referring me for these roles? I'd greatly appreciate it!
+
+Jobs:
+1. Software Engineer Intern (Data-TnS-Eng-Risk & Response) - 2025 Summer (BS/MS), Job ID: A52934
+2. (General Hire) Machine Learning Engineer Intern (USDS)- 2025 Summer (BS/MS), Job ID: A180083
+
+Why I’m a great fit:
+
+Research Experience: 
+At UCSD, I’m developing cardiac motion correction techniques using neural implicit learning, closely aligning with TikTok's AI research focus.
+
+Industry Experience: 
+I spent 3 years at Siemens Healthineers, building deep learning models for medical imaging and advanced prototypes for imaging solutions.
+
+Technical Skills: 
+Proficient in Python, C++, and CUDA, with extensive experience in PyTorch, TensorFlow, and parallel computing.
+
+Innovation: 
+Nominated for a patent for an image quality-adaptive algorithm at Siemens Healthineers.
+
+I’ve attached my resume for reference. Thanks so much for your time!
+
+Best regards,
+Ketan Vibhandik
++1 858 220 2362
+kvibhandik@ucsd.edu

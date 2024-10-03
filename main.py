@@ -4,7 +4,7 @@ from selenium.webdriver.chrome.service import Service as ChromeService
 import time
 from modules.login import login_to_linkedin
 from modules.connect import send_connect_requests
-#from modules.message import send_message_requests
+from modules.message import send_message_requests
 from modules.utils import load_config, load_message_template
 
 def main():
@@ -25,8 +25,8 @@ def main():
     # Perform actions based on mode (either "connect" or "message")
     if config['mode'] == "connect":
         send_connect_requests(driver, message_template, config['max_requests'])
-    #elif config['mode'] == "message":
-        #send_message_requests(driver, message_template, config['max_requests'])
+    elif config['mode'] == "message":
+        send_message_requests(driver, message_template, config['max_requests'])
 
     # Close the browser when done
     driver.quit()
