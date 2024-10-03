@@ -109,12 +109,14 @@ def send_connection_requests(message_template, max_requests):
                 send_button = driver.find_element(By.XPATH, '//button//span[text()="Send"]')
                 parent_send_button = send_button.find_element(By.XPATH, './ancestor::button')
                 time.sleep(3)
-                if parent_send_button:
+                if parent_send_button and parent_send_button.is_enabled(): 
                     parent_send_button.click()
                     request_count += 1
                     print(f"Connection request sent to {profile_name} successfully. ({request_count}/{max_requests})")
                     log_connection_result(profile_name, "Success")
                 else:
+                    close_button = driver.find_element(By.XPATH, '//button[@aria-label="Dismiss"]')
+                    close_button.click()
                     print(f"Couldn't find Send button for {profile_name}. Request may not have been sent.")
                     log_connection_result(profile_name, "Failed (No Send button)")
 
@@ -125,10 +127,13 @@ def send_connection_requests(message_template, max_requests):
                 print(f"Failed to process {profile_name}: {str(e)}")
                 log_connection_result(profile_name, f"Failed (Error: {str(e)})")
                 continue
-
+        
+        time.sleep(2)
         # Check for "Next" button
         try:
-            next_button = driver.find_element(By.XPATH, './/span[@class="artdeco-button__text" and text()="Next"]')
+            driver.execute_script("window.scrollTo(0, document.body.scrollHeight*.9);")
+            time.sleep(2)
+            next_button = driver.find_element(By.XPATH, '//span[text()="Next"]/ancestor::button')
             if "artdeco-button--disabled" in next_button.get_attribute("class"):
                 print("Next button is disabled. Ran out of options.")
                 return
