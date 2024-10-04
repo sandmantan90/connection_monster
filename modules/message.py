@@ -31,11 +31,13 @@ def send_message_requests(driver, message_template, max_requests):
                     if message_button:
                         message_button.click()
                         time.sleep(2)
-
-                        active_element = driver.switch_to.active_element
                         
                         first_name = get_first_name(profile_name)
                         personalized_message = message_template.replace("{name}", first_name)
+
+                        active_element = driver.switch_to.active_element
+                        active_element.clear()
+                        time.sleep(1)
                         active_element.send_keys(personalized_message)
                         attach_resume_directly(driver, profile_name)
                         send_button(driver, profile_name, request_count, max_requests)
@@ -62,8 +64,11 @@ def send_button(driver, profile_name, request_count, max_requests):
         send_button = send_button.find_element(By.XPATH, './ancestor::button')
     except:
         pass
+    time.sleep(3)
     if send_button and send_button.is_enabled():
+        time.sleep(3)
         send_button.click()
+        time.sleep(3)
         request_count += 1
         print(f"Message sent to {profile_name} successfully. ({request_count}/{max_requests})")
         log_action_result(profile_name, "Success")
